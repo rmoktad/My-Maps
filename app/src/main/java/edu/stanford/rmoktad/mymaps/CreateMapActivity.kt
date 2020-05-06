@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -19,10 +20,9 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.Marker
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.*
 import com.google.android.material.snackbar.Snackbar
+import com.google.maps.android.ui.IconGenerator
 import edu.stanford.rmoktad.mymaps.models.Place
 import edu.stanford.rmoktad.mymaps.models.UserMap
 import kotlinx.android.synthetic.main.dialog_create_place.*
@@ -128,8 +128,17 @@ class CreateMapActivity : AppCompatActivity(), OnMapReadyCallback {
                 return@setOnClickListener
             }
 
+        val iconGenerator = IconGenerator(this);
+
+        //Create custom icon for markers (speech bubble)
+        iconGenerator.setStyle(IconGenerator.STYLE_PURPLE);
+        //Put title inside speech bubble
+        val bitmap = iconGenerator.makeIcon(title);
+        // Use BitmapDescriptorFactory to create the marker
+        val icon = BitmapDescriptorFactory.fromBitmap(bitmap);
+
             val marker =
-                mMap.addMarker(MarkerOptions().position(latLng).title(title).snippet(description))
+                mMap.addMarker(MarkerOptions().position(latLng).title(title).snippet(description).icon(icon))
             markers.add(marker)
             dialog.dismiss()
         }
