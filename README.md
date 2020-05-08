@@ -22,18 +22,21 @@ The following **extensions** are implemented:
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
+(Please note that my computer was being a little slow so there is some lag between some activities.)
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='MyMaps.gif' title='Video Walkthrough' height = '800' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+One challenge that I had was when I was implementing changes to the "Create Map" activity, such as changing the icon that was
+used for the markers, I would forget to make the same kind of updates to the "Display Map" activity where the user's map would
+be pulled up. Hopefully I can learn how to better organize my code so I only have to change this type of styling in one place!
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright 2020 Raaisa Moktader
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
