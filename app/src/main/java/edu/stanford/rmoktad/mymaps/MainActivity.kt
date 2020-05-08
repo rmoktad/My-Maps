@@ -21,7 +21,7 @@ import java.io.*
 
 const val EXTRA_USER_MAP = "EXTRA_USER_MAP"
 const val EXTRA_MAP_TITLE= "EXTRA_MAP_TITLE"
-const val FILENAME = "UserMaps.data"
+const val FILENAME = "UserMapsCollection.data"
 private const val REQUEST_CODE = 1234
 private const val TAG = "MainActivity"
 class MainActivity : AppCompatActivity() {

@@ -9,9 +9,11 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.maps.android.ui.IconGenerator
 import edu.stanford.rmoktad.mymaps.models.UserMap
 
 const private val TAG = "DisplayMapActivity"
@@ -47,11 +49,21 @@ class DisplayMapActivity : AppCompatActivity(), OnMapReadyCallback {
 
         Log.i(TAG, "User map to render: ${userMap.title}")
 
+        val iconGenerator = IconGenerator(this);
+
+        //Create custom icon for markers (speech bubble)
+        iconGenerator.setStyle(IconGenerator.STYLE_PURPLE);
+
+
         val boundsBuilder = LatLngBounds.Builder()
         for(place in userMap.places){
             val latLng = LatLng(place.latitude, place.longitude)
             boundsBuilder.include(latLng)
-            mMap.addMarker(MarkerOptions().position(latLng).title(place.title).snippet(place.description))
+            //Put title inside speech bubble
+            val bitmap = iconGenerator.makeIcon(place.title);
+            // Use BitmapDescriptorFactory to create the marker
+            val icon = BitmapDescriptorFactory.fromBitmap(bitmap);
+            mMap.addMarker(MarkerOptions().position(latLng).title(place.title).snippet(place.description).icon(icon))
         }
         // Add a marker in Sydney and move the camera
 //        val sydney = LatLng(-34.0, 151.0)
