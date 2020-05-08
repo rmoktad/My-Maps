@@ -26,8 +26,6 @@ Here's a walkthrough of implemented user stories:
 
 <img src='MyMaps.gif' title='Video Walkthrough' height = '800' width='' alt='Video Walkthrough' />
 
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
-
 ## Notes
 
 One challenge that I had was when I was implementing changes to the "Create Map" activity, such as changing the icon that was
